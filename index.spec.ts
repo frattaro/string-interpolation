@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { Interpolator } from ".";
+import { Interpolator } from "./";
 
 describe("Interpolator", () => {
   it("should initalize with options", () => {

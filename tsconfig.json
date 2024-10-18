@@ -10,6 +10,5 @@
     "declaration": true,
     "strictNullChecks": true
   },
-  "include": ["./index.ts"],
-  "exclude": ["./dist/**/*"]
+  "include": ["./index.ts"]
 }
