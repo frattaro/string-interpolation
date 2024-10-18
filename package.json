@@ -1,19 +1,44 @@
 {
-  "name": "string-interpolation",
-  "version": "1.2.5",
-  "description": "Dynamic string manipulation",
+  "name": "string-interpolation-ts",
+  "version": "2.0.0",
+  "description": "Dynamic string manipulation in typescript",
   "main": "dist/index.js",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "4.17.21"
+  },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
-    "jest": "^22.4.3"
+    "@eslint/js": "9.12.0",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/react": "16.0.1",
+    "@trivago/prettier-plugin-sort-imports": "4.3.0",
+    "@types/lodash": "4.17.11",
+    "@types/node": "22.7.6",
+    "@types/rails__actioncable": "6.1.11",
+    "@types/react": "18.3.11",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.2",
+    "@vitest/coverage-v8": "2.1.1",
+    "copyfiles": "2.4.1",
+    "eslint": "9.12.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.2.1",
+    "eslint-plugin-react": "7.37.1",
+    "eslint-plugin-security": "3.0.1",
+    "jsdom": "25.0.1",
+    "prettier": "3.3.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "rimraf": "6.0.1",
+    "typescript": "5.6.3",
+    "typescript-eslint": "8.9.0",
+    "vitest": "2.1.1"
   },
   "scripts": {
-    "test": "jest --coverage",
-    "test:dev": "jest --watch",
-    "prepare": "rm -rf build && babel ./src --out-dir ./dist"
+    "build": "npm run clean && tsc",
+    "clean": "rimraf dist && rimraf coverage",
+    "publish-package": "npm run clean && npm ci && npm run build && npm publish",
+    "test": "npm run lint && vitest run --coverage",
+    "lint": "npm run clean && eslint ./index.ts --max-warnings 0"
   },
   "repository": {
     "type": "git",
@@ -25,10 +50,9 @@
     "string",
     "interpolation"
   ],
-  "author": "Daniel Seripap <daniel@seripap.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/seripap/string-interpolation/issues"
+    "url": "https://github.com/frattaro/string-interpolation/issues"
   },
-  "homepage": "https://github.com/seripap/string-interpolation#readme"
+  "homepage": "https://github.com/frattaro/string-interpolation#readme"
 }
