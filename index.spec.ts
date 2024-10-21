@@ -55,7 +55,7 @@ describe("Parser", () => {
     expect(interpolated).toBe(expected);
   });
 
-  it("should gracefullt fail undefined modifiers", () => {
+  it("should gracefully fail undefined modifiers", () => {
     const interpolator = new Interpolator();
     const replaceThis = `Hi, my name is {name|undefinedModifier}.`;
     const data = {
@@ -74,14 +74,22 @@ describe("Parser", () => {
   });
 
   it("should parse undefined data that has no alternative text", () => {
-    const interpolator = new Interpolator();
+    const interpolator = new Interpolator({
+      modifiers: [
+        {
+          key: "uppercase",
+          transform: (v) => v.toUpperCase()
+        }
+      ]
+    });
     const str = `Hi my name is {name|uppercase}`;
     const data = {
       notName: "dan"
     };
+
     const interpolated = interpolator.parse(str, data);
     const expected = "Hi my name is ";
-    expect(interpolated).toMatch(expected);
+    expect(interpolated).toStrictEqual(expected);
   });
 
   it("should support data aliases references from helper function", () => {
@@ -158,7 +166,7 @@ describe("Parser", () => {
 
   it("modifiers should have access to raw data", () => {
     const interpolator = new Interpolator();
-    const replaceThis = `2015 World Series Winner: {2015|year2015}`;
+    const replaceThis = `2015 World Series Winner: {winners|year2015}`;
     const worldSeriesWinner = {
       winners: [
         {
@@ -176,23 +184,16 @@ describe("Parser", () => {
       ]
     };
 
-    // val will be`2015`, data will be worldSeriesWinner
-    const advanceCustomModifier = (val, data) => {
-      try {
-        // val is always a string, which is why parseInt is neccessary if referencing a number
-        const winner = data.winners.find(
-          (winner) => winner.year === parseInt(val)
-        );
-        return winner.team;
-      } catch (e) {
-        console.log(e);
-        return val;
-      }
-    };
-
+    // val will be `2015`, data will be worldSeriesWinner
     interpolator.registerModifier({
       key: "year2015",
-      transform: advanceCustomModifier
+      transform: (val, data) => {
+        // @ts-expect-error
+        return data.winners.find(
+          // val is always a string, which is why parseInt is neccessary if referencing a number
+          (winner) => winner.year === 2015
+        )?.team;
+      }
     });
 
     const interpolated = interpolator.parse(replaceThis, worldSeriesWinner);

@@ -132,11 +132,7 @@ export class Interpolator {
       );
     }
 
-    const defaultModifier = this.applyModifiers(rule.modifiers, rule.key, data);
-    if (defaultModifier === rule.key) {
-      return str.replace(rule.replace, "");
-    }
-    return str.replace(rule.replace, defaultModifier);
+    return str.replace(rule.replace, "");
   }
 
   getFromAlias(key: string) {
