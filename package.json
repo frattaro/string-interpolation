@@ -53,5 +53,9 @@
   "bugs": {
     "url": "https://github.com/frattaro/string-interpolation/issues"
   },
-  "homepage": "https://github.com/frattaro/string-interpolation#readme"
+  "homepage": "https://github.com/frattaro/string-interpolation#readme",
+  "engineStrict": true,
+  "engines": {
+    "node": "^22"
+  }
 }
