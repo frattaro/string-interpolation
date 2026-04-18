@@ -111,7 +111,7 @@ export class Interpolator {
     return str;
   }
 
-  parseFromRules(str: string, data, rules: Rule[]) {
+  parseFromRules(str: string, data: Record<string, unknown>, rules: Rule[]) {
     return rules.reduce(
       (reducedStr, rule) => this.applyRule(reducedStr, rule, data),
       str
