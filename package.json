@@ -1,6 +1,6 @@
 {
   "name": "string-interpolation-ts",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Dynamic string manipulation in typescript",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
