@@ -54,6 +54,7 @@
   "homepage": "https://github.com/frattaro/string-interpolation#readme",
   "engineStrict": true,
   "engines": {
-    "node": "^22"
+    "node": "^24",
+    "npm": "^11"
   }
 }
