@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { Interpolator } from "./";
+import { Interpolator } from "./index";
 
 describe("Interpolator", () => {
   it("should initalize with options", () => {
@@ -190,7 +190,7 @@ describe("Parser", () => {
       transform: (val, data) => {
         // @ts-expect-error
         return data.winners.find(
-          // val is always a string, which is why parseInt is neccessary if referencing a number
+          // @ts-expect-error val is always a string, which is why parseInt is neccessary if referencing a number
           (winner) => winner.year === 2015
         )?.team;
       }

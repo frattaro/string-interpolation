@@ -2,7 +2,14 @@
   "name": "string-interpolation-ts",
   "version": "3.0.0",
   "description": "Dynamic string manipulation in typescript",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "dependencies": {
     "lodash": "4.18.1"
   },
