@@ -1,4 +1,4 @@
-import { get } from "lodash";
+import { get } from "lodash-es";
 
 export type Alias = {
   key: string;
