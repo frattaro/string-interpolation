@@ -19,8 +19,7 @@ export default tseslint.config(
       "no-console": 0,
       "no-debugger": "error",
       "no-else-return": "error",
-      "prettier/prettier": "error",
-      "react/prop-types": "off"
+      "prettier/prettier": "error"
     }
   }
 );
